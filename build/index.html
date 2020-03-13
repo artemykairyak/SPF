@@ -9,7 +9,7 @@
     <meta name="keywords" content="ключевые, слова, через, запятую">
     <link rel="shortcut icon" type='image/png' href="img/icons/favicon.ico" />
     <title>Школа профессий будущего</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,500,600,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:700,800|Montserrat:400,600,700&display=swap&subset=cyrillic" rel="stylesheet">
     <link rel="stylesheet" href="vendors/css/slick.css">
     <link rel="stylesheet" href="css/main.css" type="text/css">
     <script src="https://api-maps.yandex.ru/2.1/?apikey=0b9c0863-8140-4f2a-8972-c61a6c8406dd&lang=ru_RU" type="text/javascript">
@@ -17,26 +17,59 @@
 </head>
 
 <body>
+    <div class="overlay overlay_disabled"></div>
+    <div class="success-modal modal">
+        <div class="modal-wrapper">
+            <div class="svg success-modal__icon" data-src="img/icons/success.svg"></div>
+            <p class="success-modal__title">Вы успешно оформили заявку</p>
+            <p class="success-modal__text">Наш менеджер свяжется с&nbsp;вами для уточнения информации</p>
+            <button class="success-modal__btn btn">Понятно</button>
+        </div>
+    </div>
     <div class="order-modal modal">
-        <div class="order-modal-wrapper">
-            <span class="svg order-modal__arr" data-src="img/icons/green-arr.svg"></span>
-            <form action="" method="POST" class="order-modal__form">
+        <div class="modal-wrapper">
+            <svg class="modal__close" width="50" height="50" viewBox="0 0 50 50" fill="transparent" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M20.0046 25.7263L0.76612 44.9648L5.03563 49.2343L24.2741 29.9958L44.2786 50.0003L48.5481 45.7308L28.5436 25.7263L49.3142 4.95566L45.0447 0.686157L24.2741 21.4568L4.26951 1.45218L0 5.72169L20.0046 25.7263Z" fill="url(#paint0_linear)" />
+                <defs>
+                    <linearGradient id="paint0_linear" x1="24.6571" y1="0.686157" x2="24.6571" y2="50.0003" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#FBFF20" />
+                        <stop offset="1" stop-color="#9CFF94" />
+                    </linearGradient>
+                </defs>
+            </svg>
+            <svg class="modal__arr" width="51" height="51" viewBox="0 0 51 51" fill="transparent" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 51L51 51L51 5.24537e-07L45 0L45 40.7573L6.12134 1.87867L1.8787 6.12131L40.7574 45L5.24537e-07 45L0 51Z" fill="url(#paint0_linear)" />
+                <defs>
+                    <linearGradient id="paint0_linear" x1="25.5" y1="0" x2="25.5" y2="51" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#FBFF20" />
+                        <stop offset="1" stop-color="#9CFF94" />
+                    </linearGradient>
+                </defs>
+            </svg>
+            <form action="et.php" method="POST" class="order-modal__form">
                 <div class="order-modal__input-container order-modal__input-container_name">
                     <input type="text" name="name" class="order-modal__input order-modal__name">
                     <span class="order-modal__error-msg">Не введено имя</span>
                 </div>
                 <div class="order-modal__input-container order-modal__input-container_age">
                     <input type="text" name="age" class="order-modal__input order-modal__age">
-                    <span class="order-modal__error-msg">Не введен возраст</span>
+                    <span class="order-modal__error-msg">Неправильно введён возраст</span>
                 </div>
                 <div class="order-modal__input-container order-modal__input-container_course">
-                	
-                    <select class="order-modal__input order-modal__input_course" size="1" name="corse[]">
-                        <option class="order-modal__option" disabled selected ></option>
-                        <option class="order-modal__option"  value="Программирование">Программирование</option>
-                        <option class="order-modal__option"  value="Дизайн">Дизайн</option>
-                    </select>
+                    <div class="order-modal__course">
+                        <input class="order-modal__course-radio" id="programming-course" name="course" checked class="order-modal__course" type="radio" value="Программирование">
+                        <label class="order-modal__course-label" for="programming-course">Программирование</label>
+                    </div>
+                    <div class="order-modal__course">
+                        <input class="order-modal__course-radio" id="design-course" name="course" class="order-modal__course" type="radio" value="Дизайн">
+                        <label class="order-modal__course-label" for="design-course">Дизайн</label>
+                    </div>
                 </div>
+                <div class="order-modal__input-container order-modal__input-container_phone">
+                    <input type="text" name="phone" class="order-modal__input order-modal__phone">
+                    <span class="order-modal__error-msg">Неправильно введён номер</span>
+                </div>
+                <button class="order-modal__order-btn btn">Отправить</button>
             </form>
         </div>
     </div>
@@ -56,23 +89,25 @@
         <section class="header">
             <div class="wrapper">
                 <menu class="menu">
-                    <h1 class="header__title">Школа<br />профессий<br />будущего</h1>
+                    <a href="/">
+                        <h1 class="header__title">Школа<br />профессий<br />будущего</h1>
+                    </a>
                     <div class="header__nav">
                         <ul class="header__menu">
                             <li class="header__menu-item">
-                                <a href="#" class="header__menu-link">Программирование</a>
+                                <a href="#" class="header__menu-link header__menu-link_programming">Программирование</a>
                             </li>
                             <li class="header__menu-item">
-                                <a href="#" class="header__menu-link">Дизайн</a>
+                                <a href="#" class="header__menu-link header__menu-link_design">Дизайн</a>
                             </li>
                             <li class="header__menu-item">
-                                <a href="#" class="header__menu-link">Контакты</a>
+                                <a href="#" class="header__menu-link header__menu-link_teachers">Преподаватели</a>
                             </li>
                             <li class="header__menu-item">
-                                <a href="#" class="header__menu-link">О школе</a>
+                                <a href="#" class="header__menu-link header__menu-link_contacts">Контакты</a>
                             </li>
                         </ul>
-                        <a href="#" class="header__phone">8 (987) 654-32-10</a>
+                        <a href="tel:89876543210" class="header__phone">8 (987) 654-32-10</a>
                     </div>
                 </menu>
                 <div class="header__content">
@@ -175,8 +210,14 @@
                     <div class="teachers__header">
                         <h2 class="teachers__title title">Преподаватели</h2>
                         <div class="teachers__nav">
-                            <span class="svg teachers__nav_left teachers__nav-arr" data-src="img/icons/white-arr-left.svg"></span>
-                            <span class="svg teachers__nav_right teachers__nav-arr" data-src="img/icons/white-arr-right.svg"></span>
+                            <svg class="teachers__nav_left teachers__nav-arr" width="51" height="51" viewBox="0 0 51 51" fill="transparent" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.680664 25.6274L25.4676 0.840533L29.7868 5.15978L9.31916 25.6274L29.7868 46.0951L25.4676 50.4144L0.680664 25.6274Z" fill="white" />
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M46.4834 28.6819L5.00002 28.6819L5.00002 22.5736L46.4834 22.5736L46.4834 28.6819Z" fill="white" />
+                            </svg>
+                            <svg class="teachers__nav_right teachers__nav-arr" width="50" height="51" viewBox="0 0 50 51" fill="transparent" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M49.8289 25.6274L25.0418 50.4145L20.7226 46.0952L41.1904 25.6274L20.7226 5.15965L25.0418 0.840406L49.8289 25.6274Z" fill="white" />
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.02578 22.5733L45.5094 22.5733L45.5094 28.6817L4.02578 28.6817L4.02578 22.5733Z" fill="white" />
+                            </svg>
                         </div>
                     </div>
                     <div class="teachers__slider">
@@ -206,12 +247,19 @@
                         </div>
                         <div class="teachers__slide">
                             <img data-lazy="img/teachers/teacher.jpg" alt="">
+                            <div class="teachers__teacher-info">
+                                <p class="teachers__teacher-name">Иван Иванов</p>
+                                <p class="teachers__teacher-position">Руководитель отдела frontend-разработки digital-агентства ASAP</p>
+                                <p class="teachers__teacher-exp">Опыт работы — 3 года</p>
+                            </div>
                         </div>
                         <div class="teachers__slide">
                             <img data-lazy="img/teachers/teacher.jpg" alt="">
-                        </div>
-                        <div class="teachers__slide">
-                            <img data-lazy="img/teachers/teacher.jpg" alt="">
+                            <div class="teachers__teacher-info">
+                                <p class="teachers__teacher-name">Иван Иванов</p>
+                                <p class="teachers__teacher-position">Руководитель отдела frontend-разработки digital-агентства ASAP</p>
+                                <p class="teachers__teacher-exp">Опыт работы — 3 года</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -224,8 +272,12 @@
                         <div class="contacts__contacts">
                             <h2 class="contacts__title title">Контакты</h2>
                             <p class="contacts__questions">Вы&nbsp;можете задать любые интересующие вопросы по&nbsp;телефону</p>
-                            <a href="#" class="contacts__phone">8 (987) 654-32-10</a>
-                            <p class="contacts__soc"><a href="#" class="contacts__soc-link">whatsapp</a>, <a href="#" class="contacts__soc-link">telegram</a>, <a href="#" class="contacts__soc-link">viber</a></p>
+                            <a href="tel:89876543210" class="contacts__phone">8 (987) 654-32-10</a>
+                            <p class="contacts__soc">
+                                <a href="#" class="contacts__soc-link">whatsapp</a>
+                                <a href="#" class="contacts__soc-link">telegram</a>
+                                <a href="#" class="contacts__soc-link">viber</a>
+                            </p>
                         </div>
                         <div class="contacts__addinfo">
                             <p class="contacts__addinfo-text">
@@ -240,10 +292,10 @@
             </div>
         </section>
     </main>
-    <!-- TYPE YOUR HTML HERE -->
     <script src="vendors/js/easySVG.min.js"></script>
     <script src="vendors/js/jquery-3.4.1.min.js"></script>
     <script src="vendors/js/slick.min.js"></script>
+    <script src="vendors/js/scroll.js"></script>
     <script src="js/scripts.js" type="text/javascript"></script>
 </body>
 

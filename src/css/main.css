@@ -31,7 +31,7 @@ html {
 }
 
 body {
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
   cursor: default;
@@ -43,11 +43,6 @@ body {
   position: relative;
 }
 
-main {
-  /*overflow: hidden;*/
-  /*height: 100vh;*/
-}
-
 section {
   width: 100%;
   position: relative;
@@ -56,9 +51,11 @@ section {
 
 a {
   text-decoration: none;
+  color: inherit;
+  display: inline-block;
 }
 
-input,
+input:not([type="radio"]),
 textarea,
 button,
 select,
@@ -98,11 +95,12 @@ option {
   font-weight: 800;
   font-size: 64px;
   line-height: 87.5%;
+  font-family: 'Montserrat Alternates', sans-serif;
 }
 
 .side-picture {
-  width: 30%;
-  height: 90%;
+  width: 33.5%;
+  height: 100%;
   position: relative;
   border-radius: 2px;
   display: -webkit-flex;
@@ -113,6 +111,12 @@ option {
   align-items: flex-end;
   justify-content: space-between;
   padding: 2%;
+  cursor: pointer;
+  transition: opacity .5s ease;
+}
+
+.side-picture:hover .side-picture__arr {
+  transform: translate(5px, 5px);
 }
 
 .side-picture__pic {
@@ -142,6 +146,7 @@ option {
   z-index: 2;
   width: 66px;
   height: 66px;
+  transition: all .3s ease-out;
 }
 
 /* HEADER */
@@ -170,7 +175,7 @@ option {
   background: rgba(255, 255, 255, 0.3);
   animation: animate 25s linear infinite;
   bottom: -150px;
-  color: #595757;
+  color: rgba(89, 87, 87, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -190,7 +195,6 @@ option {
   width: 77px;
   height: 77px;
   border-radius: 11px;
-  color: #595757;
   animation-delay: 2s;
   animation-duration: 15s;
   font-size: 12px;
@@ -286,6 +290,7 @@ option {
   font-weight: 800;
   font-size: 20px;
   line-height: 95.5%;
+  font-family: 'Montserrat Alternates', sans-serif;
 }
 
 .header__nav {
@@ -317,6 +322,12 @@ option {
   height: 100%;
   display: flex;
   align-items: center;
+  opacity: 0.7;
+  transition: all .3s ease;
+}
+
+.header__menu-item:hover {
+  opacity: 1;
 }
 
 .header__menu-link {
@@ -347,7 +358,13 @@ option {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  height: 70vh;
+  height: 68vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: -10%;
+  left: 0;
+  margin: auto;
 }
 
 .header__content-labels {
@@ -359,6 +376,7 @@ option {
   font-size: 80px;
   line-height: 101.5%;
   margin-bottom: 50px;
+  font-family: 'Montserrat Alternates', sans-serif;
 }
 
 .header__content-subtitle {
@@ -434,6 +452,7 @@ option {
   margin-bottom: 48px;
   position: relative;
   z-index: 3;
+  font-family: 'Montserrat Alternates', sans-serif;
 }
 
 .programming__subtitle,
@@ -505,6 +524,11 @@ option {
   align-items: center;
 }
 
+.programming__order-btn:hover .green-arr-right,
+.design__order-btn:hover .green-arr-right {
+  transform: translateX(15px);
+}
+
 .programming__order-label,
 .design__order-label {
   margin-right: 50px;
@@ -520,6 +544,7 @@ option {
 .green-arr-right {
   width: 34.76px;
   height: 34.75px;
+  transition: all .3s ease;
 }
 
 /* END PROGRAMMING AND DESIGN */
@@ -575,6 +600,7 @@ option {
 
 .future__title,
 .future__slogan {
+  font-family: 'Montserrat Alternates', sans-serif;
   font-weight: bold;
   font-size: 46px;
   line-height: 130%;
@@ -760,16 +786,31 @@ option {
   font-size: 48px;
   line-height: 138.5%;
   color: #fff;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .contacts__soc {
   font-size: 18px;
   line-height: 138.5%;
+  font-weight: bold;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: space-between;
+  width: 58%;
 }
 
 .contacts__soc-link {
+  transition: all .3s ease;
   color: #fff;
+  opacity: 0.7;
+  padding: 20px 0px;
+}
+
+.contacts__soc-link:hover {
+  opacity: 1;
 }
 
 .contacts__map {
@@ -788,25 +829,122 @@ option {
   transform: translate(-50%, -50%);
   max-width: 580px;
   width: 40%;
-  z-index: 50;
+  z-index: -1;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  transition-delay: 0.1s;
 }
 
-.order-modal {
-  background: rgba(45, 44, 44, 0.44);
-}
-
-.order-modal-wrapper {
+.modal-wrapper {
   position: relative;
   padding: 60px;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }
 
-.order-modal__arr {
+.modal_active {
+  z-index: 50;
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal_active.success-modal {
+  z-index: 51;
+}
+
+.modal_notframed .modal__close {
+  display: block;
+}
+
+.modal_notframed .modal__arr {
+  display: none;
+}
+
+.modal__close {
   position: absolute;
   top: 60px;
   right: 60px;
-  transform: rotate(-90deg);
+  width: 50px;
+  height: 50px;
+  display: none;
+  cursor: pointer;
+}
+
+.modal__arr {
+  position: absolute;
+  top: 60px;
+  right: 60px;
+  transform: rotate(-90deg) translate(0px, 0px);
   width: 67px;
   height: 67px;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+.modal__arr:hover {
+  transform: rotate(-90deg) translate(5px, 5px);
+}
+
+.btn {
+  width: 100%;
+  padding: 32px 15px;
+  background: linear-gradient(180deg, #FBFF20 0%, #9CFF94 100%);
+  font-size: 18px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn_disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
+.success-modal {
+  background: #2D2C2C;
+}
+
+.success-modal .modal-wrapper {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.success-modal__icon {
+  width: 185px;
+  height: 187px;
+  margin-bottom: 28px;
+}
+
+.success-modal__title {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 120.5%;
+}
+
+.success-modal__text {
+  font-size: 18px;
+  line-height: 150%;
+  margin: 22px 0 45px;
+}
+
+.order-modal {
+  background: #2D2C2C;
 }
 
 .order-modal__form {
@@ -842,8 +980,8 @@ option {
   content: 'Возраст';
 }
 
-.order-modal__input-container_course:before {
-  content: 'Курс';
+.order-modal__input-container_phone:before {
+  content: 'Телефон';
 }
 
 .order-modal__input-container_error .order-modal__error-msg {
@@ -851,7 +989,7 @@ option {
 }
 
 .order-modal__input-container_focused:before {
-  top: -18px;
+  top: -10px;
   font-size: 12px;
 }
 
@@ -859,21 +997,86 @@ option {
   opacity: 1;
 }
 
-.order-modal__input-container_error {
-  /* .order-form__input {
-                        color: #FF3030;
-                        opacity: 0.9;
-                    }*/
-}
-
 .order-modal__input-container_error .order-modal__error-msg {
   opacity: 1;
+  color: #ff1744;
+}
+
+.order-modal__input-container_course {
+  border: none;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-modal__course {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.order-modal__course * {
+  cursor: pointer;
+}
+
+.order-modal__course-radio {
+  display: none;
+  width: 27px;
+  height: 27px;
+  margin-right: 15px;
+  background: transparent;
+}
+
+.order-modal__course-radio:checked + label:after {
+  opacity: 1;
+}
+
+.order-modal__course-label {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 150%;
+  margin-left: 45px;
+}
+
+.order-modal__course-label:before {
+  content: "";
+  display: inline-block;
+  border-radius: 100%;
+  width: 27px;
+  height: 27px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: transparent;
+  border: 2px solid #fff;
+  transition: all .3s ease;
+}
+
+.order-modal__course-label:after {
+  content: "";
+  display: inline-block;
+  border-radius: 100%;
+  width: 17px;
+  height: 17px;
+  position: absolute;
+  left: 7px;
+  top: 3px;
+  opacity: 0;
+  transition: all .3s ease;
+  background: linear-gradient(180deg, #FBFF20 0%, #9CFF94 100%);
 }
 
 .order-modal__input {
   background: transparent;
   border: none;
-  padding: 0 0 10px 0;
   position: relative;
   outline: none;
   width: 100%;
@@ -893,13 +1096,31 @@ option {
 .order-modal__error-msg {
   position: absolute;
   left: 0;
-  bottom: -25px;
+  bottom: -20px;
   font-weight: 300;
   font-size: 11px;
   line-height: 13px;
   letter-spacing: .05em;
   /* color: #ff3030;*/
   opacity: 0;
+}
+
+.order-modal__order-btn {
+  margin-top: 40px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 40;
+}
+
+.overlay_disabled {
+  display: none;
 }
 
 /* END MODAL */
