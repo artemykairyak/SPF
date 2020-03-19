@@ -10,6 +10,12 @@ $(function() {
             prevArrow: $('.teachers__nav_left'),
             nextArrow: $('.teachers__nav_right'),
             fade: false,
+            responsive: [{
+                breakpoint: 1025,
+                settings: {
+                    slidesToShow: 3,
+                }
+            }]
         });
     }, 100)
 
@@ -96,13 +102,11 @@ $(function() {
     });
 
     function showModal(modal) {
-        modal.addClass('modal_notframed');
         modal.addClass('modal_active');
         $('.overlay').show();
     }
 
     function hideModal(modal) {
-        modal.removeClass('modal_notframed');
         modal.removeClass('modal_active');
         $('.overlay').hide();
     }
@@ -112,6 +116,8 @@ $(function() {
             $('.framed').attr('style', '');
             $('.framed').removeClass('framed');
         }
+
+        modal.addClass('modal_framed');
 
         modal.css({
             'width': container.outerWidth() + 'px',
@@ -136,6 +142,7 @@ $(function() {
         $('.modal').attr('style', '');
         $('.header__content-picture, .future__content-picture').attr('style', '');
         $('.modal').removeClass('modal_active');
+        $('.modal').removeClass('modal_framed');
     }
 
     function validateForm(form) {
@@ -159,9 +166,9 @@ $(function() {
         if ($('.framed').length > 0) {
             $('.framed').attr('style', '');
             $('.framed').removeClass('framed');
-            $('.modal').removeClass('modal_notframed');
+            $('.modal').removeClass('modal_framed');
         }
-
+        $('.overlay').hide();
         $('.modal').removeClass('modal_active');
     })
 
@@ -203,12 +210,12 @@ $(function() {
     $('.overlay').on('click', function() {
         $('.modal').removeClass('modal_active')
         $('.overlay').hide();
-        $('.modal').removeClass('modal_notframed');
+        $('.modal').removeClass('modal_framed');
     });
 
     $('.success-modal__btn').on('click', function(e) {
         e.preventDefault();
-        $('.modal').removeClass('modal_notframed');
+        $('.modal').removeClass('modal_framed');
 
         if ($('.framed').length > 0) {
             $('.framed').attr('style', '');

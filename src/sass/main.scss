@@ -61,12 +61,11 @@ select,
 option {
     -webkit-appearance: none;
     -webkit-border-radius: 0;
-    font-family: 'Montserrat Alternates', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .header {
     position: relative;
-
 
     &:before {
         content: '';
@@ -286,7 +285,7 @@ option {
     display: -ms-flex;
     display: -o-flex;
     display: flex;
-    height: 140px;
+    height: 15vh;
     justify-content: space-between;
     align-items: center;
     position: relative;
@@ -295,13 +294,13 @@ option {
 .header {
     &__title {
         font-weight: 800;
-        font-size: 20px;
+        font-size: 24px;
         line-height: 95.5%;
         font-family: 'Montserrat Alternates', sans-serif;
     }
 
     &__nav {
-        width: 60%;
+        width: 64%;
         display: -webkit-flex;
         display: -moz-flex;
         display: -ms-flex;
@@ -339,7 +338,7 @@ option {
 
         &-link {
             height: 100%;
-            font-size: 16px;
+            font-size: 18px;
             line-height: 115.5%;
             color: #fff;
             display: flex;
@@ -349,7 +348,7 @@ option {
 
     &__phone {
         font-weight: 600;
-        font-size: 18px;
+        font-size: 24px;
         line-height: 138.5%;
         color: #fff;
         cursor: pointer;
@@ -404,6 +403,16 @@ option {
 
 .words {
     height: 40vh;
+
+    .wrapper {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
     &__text {
         width: 75%;
@@ -759,7 +768,7 @@ option {
 
     &__contacts {
         height: 60%;
-        padding-bottom: 15%;
+        padding-bottom: 7vh;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
 
@@ -866,7 +875,7 @@ option {
         }
     }
 
-    &_notframed {
+    &:not(.modal_framed) {
         .modal__close {
             display: block;
         }
@@ -1141,3 +1150,334 @@ option {
 }
 
 /* END MODAL */
+
+@media (max-width: 1500px) {
+    .modal_framed {
+        .modal-wrapper {
+            padding: 7%;
+        }
+
+        .modal__arr {
+            top: 7%;
+            right: 7%;
+            width: 48.24px;
+            height: 48.24px;
+        }
+
+        .order-modal__input-container:before {
+            font-size: 18px;
+        }
+
+        .order-modal__input-container_focused:before {
+            top: -15px;
+        }
+
+        .order-modal__input {
+            font-size: 16px;
+            height: 40px;
+            font-weight: normal;
+        }
+
+        .order-modal__course-label {
+            font-size: 16px;
+        }
+
+        .order-modal__course-label:before {
+            width: 23px;
+            height: 23px;
+        }
+
+        .order-modal__course-label:after {
+            width: 15px;
+            height: 15px;
+            left: 6px;
+        }
+
+        .order-modal__order-btn {
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 20px 15px;
+        }
+
+        .success-modal__title {
+            font-size: 24px;
+        }
+
+        .success-modal__icon {
+            height: 150px;
+            width: 150px;
+        }
+    }
+}
+
+@media (max-width: 1440px) {
+    .header__title {
+        font-size: 20px;
+    }
+
+    .header__menu-link {
+        font-size: 16px;
+    }
+
+    .header__phone {
+        font-size: 18px;
+    }
+
+    .design__subtitle,
+    .programming__subtitle,
+    .contacts__questions,
+    .future__text {
+        font-size: 18px;
+    }
+
+    .header__content-title {
+        font-size: 64px;
+    }
+
+    .header__content-subtitle,
+    .words__text {
+        font-size: 24px;
+    }
+
+    .side-picture__label {
+        font-size: 36px;
+    }
+
+    .side-picture {
+        width: 33%;
+        padding: 3%;
+    }
+
+    .side-picture__arr {
+        width: 51px;
+        height: 51px;
+    }
+
+    .design__title,
+    .programming__title {
+        font-size: 64px;
+    }
+
+    .design__date-title,
+    .design__duration-title,
+    .programming__date-title,
+    .programming__duration-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .design__date-lessons,
+    .design__date-terms,
+    .design__duration-lessons,
+    .design__duration-terms,
+    .programming__date-lessons,
+    .programming__date-terms,
+    .programming__duration-lessons,
+    .programming__duration-terms {
+        font-size: 14px;
+    }
+
+    .design__order-label,
+    .programming__order-label {
+        font-size: 18px;
+        margin-right: 42px;
+    }
+
+    .green-arr-right {
+        width: 26px;
+        height: 26px;
+    }
+
+    .future__slogan,
+    .future__title {
+        font-size: 36px;
+    }
+
+
+    .title {
+        font-size: 48px;
+    }
+
+    .teachers__nav-arr {
+        width: 24px;
+        height: 24px;
+    }
+
+    .teachers__nav_left {
+        margin-right: 25px;
+    }
+
+    .teachers__teacher-name {
+        font-size: 14px;
+    }
+
+    .teachers__teacher-exp,
+    .teachers__teacher-position {
+        font-size: 12px;
+    }
+
+    .teachers__teacher-info {
+        padding: 20px 16px 17px 20px;
+    }
+
+    .contacts__phone {
+        font-size: 36px;
+    }
+
+    .contacts__addinfo-text {
+        font-size: 16px;
+        margin-top: 7vh;
+    }
+
+    .contacts__contacts {
+        padding-bottom: 7vh;
+    }
+
+}
+
+@media (max-width: 1200px) {
+    .future__labels {
+        width: 45%;
+    }
+
+    .side-picture {
+        width: 40%;
+    }
+
+    .teachers__content {
+        justify-content: flex-start;
+    }
+
+    .teachers__slider {
+        margin-top: 13vh;
+    }
+
+    .header__content-title {
+        font-size: 56px;
+    }
+
+    .header__nav {
+        width: 80%;
+    }
+
+    .header__content-subtitle,
+    .words__text {
+        font-size: 20px;
+    }
+
+    .design__subtitle,
+    .programming__subtitle,
+    .contacts__questions,
+    .future__text {
+        font-size: 16px;
+    }
+
+    .design__title,
+    .programming__title {
+        font-size: 60px;
+    }
+
+    .contacts__soc {
+        width: 75%;
+    }
+}
+
+
+@media (max-width: 1024px) {
+    .header__content {
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .header__content-title {
+        font-size: 52px;
+    }
+
+    .words__text {
+        width: 90%;
+    }
+
+    .design__pic,
+    .programming__pic {
+        height: 55vh;
+    }
+
+    .future__content-picture {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        height: 45vh;
+    }
+
+    .side-picture__label {
+        font-size: 32px;
+    }
+
+    .future__labels {
+        width: 50%;
+    }
+
+    .contacts__info {
+        padding: 5% 5% 6% 3%;
+    }
+
+    .contacts__contacts {
+        height: 55%;
+        padding-bottom: 0;
+    }
+
+    .contacts__addinfo-text {
+        margin-top: 0;
+    }
+
+    section {
+        height: auto;
+    }
+
+    .header__content {
+        position: static;
+        padding: 70px 0;
+        height: 100%;
+    }
+
+    .teachers__content {
+        height: auto;
+    }
+
+    .words {
+        height: auto;
+        padding: 100px 0; 
+    }
+
+    .programming, .design, .future, .teachers {
+        padding: 70px 0;
+    }
+
+    .future__content-picture {
+        height: 70%;
+    }
+
+    .contacts {
+        height: 730px;
+    }
+
+    .design__pic, 
+    .programming__pic {
+        height: auto;
+        padding: 20% 4% 4%;
+    }
+
+    .header__content-picture {
+        height: 70%;
+    }
+
+    .future__content {
+        height: 550px;
+    }
+
+    .header {
+        height: 700px;
+    }
+}
