@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Описание страницы для SEO и соцсетей">
     <meta name="keywords" content="ключевые, слова, через, запятую">
-    <link rel="shortcut icon" type='image/png' href="img/icons/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="img/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/icons/favicon-16x16.png">
     <title>Школа профессий будущего</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:700,800|Montserrat:400,600,700&display=swap&subset=cyrillic" rel="stylesheet">
     <link rel="stylesheet" href="vendors/css/slick.css">
@@ -87,7 +88,7 @@
             </ul>
         </div>
         <section class="header">
-            <div class="wrapper">
+            <div class="wrapper header-wrapper">
                 <menu class="menu">
                     <a href="/">
                         <h1 class="header__title">Школа<br />профессий<br />будущего</h1>
@@ -108,8 +109,31 @@
                             </li>
                         </ul>
                         <a href="tel:89876543210" class="header__phone">8 (987) 654-32-10</a>
+                        <button class="header__burger">
+                            <span></span>
+                        </button>
                     </div>
                 </menu>
+                <div class="mobile-menu">
+                    <div class="mobile-menu__header">
+                        <p class="mobile-menu__title">Школа<br />профессий<br />будущего</p>
+                    </div>
+                    <ul class="mobile-menu__menu">
+                        <li class="mobile-menu__item">
+                            <a href="#" class="mobile-menu__link mobile-menu__link_programming">Программирование</a>
+                        </li>
+                        <li class="mobile-menu__item">
+                            <a href="#" class="mobile-menu__link mobile-menu__link_design">Дизайн</a>
+                        </li>
+                        <li class="mobile-menu__item">
+                            <a href="#" class="mobile-menu__link mobile-menu__link_teachers">Преподаватели</a>
+                        </li>
+                        <li class="mobile-menu__item">
+                            <a href="#" class="mobile-menu__link mobile-menu__link_contacts">Контакты</a>
+                        </li>
+                    </ul>
+                    <p class="mobile-menu__label">Меню</p>
+                </div>
                 <div class="header__content">
                     <div class="header__content-labels">
                         <h2 class="header__content-title">Обучаем<br />перспективным<br />профессиям</h2>
@@ -136,7 +160,7 @@
                     <div class="programming__pic">
                         <div class="programming__pic-pic"></div>
                         <h2 class="programming__title">Программирование</h2>
-                        <p class="programming__subtitle">Базовый курс для детей, изучаем основы технологий,<br> html, css, javascript, php, mysql.</p>
+                        <p class="programming__subtitle">Базовый курс для детей, изучаем основы технологий html, css, javascript, php, mysql.</p>
                     </div>
                     <div class="programming__info">
                         <div class="programming__duration">
@@ -205,7 +229,7 @@
             </div>
         </section>
         <section class="teachers">
-            <div class="wrapper">
+            <div class="wrapper teachers-wrapper">
                 <div class="teachers__content">
                     <div class="teachers__header">
                         <h2 class="teachers__title title">Преподаватели</h2>
@@ -230,7 +254,7 @@
                             </div>
                         </div>
                         <div class="teachers__slide">
-                            <img data-lazy="img/teachers/teacher.jpg" alt="">
+                            <img data-lazy="img/teachers/teacher2.jpg" alt="">
                             <div class="teachers__teacher-info">
                                 <p class="teachers__teacher-name">Иван Иванов</p>
                                 <p class="teachers__teacher-position">Руководитель отдела frontend-разработки digital-агентства ASAP</p>
@@ -238,7 +262,7 @@
                             </div>
                         </div>
                         <div class="teachers__slide">
-                            <img data-lazy="img/teachers/teacher.jpg" alt="">
+                            <img data-lazy="img/teachers/teacher3.jpg" alt="">
                             <div class="teachers__teacher-info">
                                 <p class="teachers__teacher-name">Иван Иванов</p>
                                 <p class="teachers__teacher-position">Руководитель отдела frontend-разработки digital-агентства ASAP</p>
@@ -288,6 +312,12 @@
                         </div>
                     </div>
                     <div class="contacts__map" id="map"></div>
+                    <div class="contacts__totopbtn">
+                        <button class="contacts__totopbtn-button">
+                            <p class="contacts__totopbtn-label">На главную</p>
+                            <span class="svg contacts__totopbtn-icon" data-src="img/icons/green-arr-top.svg"></span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
