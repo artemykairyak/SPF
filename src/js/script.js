@@ -1,4 +1,8 @@
 $(function() {
+    setTimeout(() => {
+        $('body').removeClass('scroll-disabled');
+        $('.preloader').addClass('preloader_disabled');
+    }, 1000);
 
     setTimeout(() => {
         $('.teachers__slider').slick({
@@ -22,13 +26,13 @@ $(function() {
                         slidesToShow: 2.5,
                     }
                 },
-                 {
+                {
                     breakpoint: 500,
                     settings: {
                         slidesToShow: 1.5,
                     }
                 },
-                 {
+                {
                     breakpoint: 375,
                     settings: {
                         slidesToShow: 1.3,
@@ -36,7 +40,7 @@ $(function() {
                 }
             ]
         });
-    }, 100)
+    }, 100);
 
 
     $('.teachers__slide').on('mouseenter', function() {
@@ -78,22 +82,22 @@ $(function() {
             $('.mobile-menu').addClass('mobile-menu_active');
             $('.overlay').show();
         }
-    })
+    });
 
     function disableBtn(btn) {
         btn.addClass('btn_disabled');
-    }
+    };
 
     function enableBtn(btn) {
         btn.removeClass('btn_disabled');
-    }
+    };
 
     function sendForm(form, container) {
         if (validateForm(form)) {
             let data = form.serializeArray();
             disableBtn($('.order-modal__order-btn'));
             $.ajax({
-                url: 'https://cors-anywhere.herokuapp.com/http://spf.asap-lp.ru/mail/index.php',
+                url: 'http://spf.asap-lp.ru/mail/index.php',
                 type: "POST",
                 data: data,
                 success: function(data) {
@@ -121,12 +125,10 @@ $(function() {
 
             form[0].reset();
         }
-    }
+    };
 
     $('.order-modal__form').on('submit', function(e) {
         e.preventDefault();
-
-        console.log($(this))
 
         if ($(this).closest('.modal').attr('style') &&
             $(this).closest('.modal').attr('style').length > 0) {
@@ -139,12 +141,12 @@ $(function() {
     function showModal(modal) {
         modal.addClass('modal_active');
         $('.overlay').show();
-    }
+    };
 
     function hideModal(modal) {
         modal.removeClass('modal_active');
         $('.overlay').hide();
-    }
+    };
 
     function showFramedModal(container, modal) {
         if ($('.framed').length > 0) {
@@ -178,7 +180,7 @@ $(function() {
         $('.header__content-picture, .future__content-picture').attr('style', '');
         $('.modal').removeClass('modal_active');
         $('.modal').removeClass('modal_framed');
-    }
+    };
 
     function validateForm(form) {
         let correct = true;
@@ -201,7 +203,7 @@ $(function() {
         $('.mobile-menu').removeClass('mobile-menu_active');
         $('.header__burger').removeClass('header__burger_active');
         $('.overlay').hide();
-    }
+    };
 
     $('.modal__arr, .modal__close').on('click', function() {
         if ($('.framed').length > 0) {
@@ -211,7 +213,7 @@ $(function() {
         }
         $('.overlay').hide();
         $('.modal').removeClass('modal_active');
-    })
+    });
 
     $('.header__menu-link_programming').on('click', function(e) {
         e.preventDefault();
@@ -300,39 +302,22 @@ $(function() {
 
         $('.modal').removeClass('modal_active');
         $('.overlay').hide();
-    })
+    });
 
     ymaps.ready(function() {
         var myMap = new ymaps.Map('map', {
                 center: [51.53147662, 46.04544572],
                 zoom: 18,
                 controls: []
-
             }, {
                 searchControlProvider: 'yandex#search'
             }),
 
             myPlacemark = new ymaps.Placemark([51.53148888584206, 46.04545542824164], {}, {
-                // Опции.
-                // Необходимо указать данный тип макета.
-                // iconLayout: 'default#image',
                 iconColor: '#d32f2f'
-                // Своё изображение иконки метки.
-                // iconImageHref: '/assets/img/icons/location.png',
-                // Размеры метки.
-                // iconImageSize: [68, 68],
-                // iconImageOffset: [-12, 0]
-                // Смещение левого верхнего угла иконки относительно
-                // её "ножки" (точки привязки).
-            })
+            });
 
         myMap.geoObjects.add(myPlacemark);
-        // myMap.behaviors.disable('scrollZoom');
         myMap.container.fitToViewport();
-
-        // if ($(window).width() < 840) {
-        //  myMap.setCenter([55.762681099950635, 37.75192034572300]);
-        // }
     });
-
 });

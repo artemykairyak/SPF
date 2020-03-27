@@ -13,7 +13,7 @@ ul {
 html {
   font-size: 18px;
   color: #fff;
-  background: #191a1c;
+  background: linear-gradient(180deg, #FF6F7A 0%, #DA3C92 100%);
 }
 
 @keyframes gradient {
@@ -42,6 +42,10 @@ body {
   animation: gradient 20s ease infinite;
   position: relative;
   overflow-x: hidden;
+}
+
+body.scroll-disabled {
+  overflow: hidden;
 }
 
 section {
@@ -91,6 +95,95 @@ button {
   width: 91%;
   position: relative;
   height: 100%;
+}
+
+.preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1000;
+  opacity: 1;
+  background: #f45f7a;
+  background-size: 100% 400%;
+  background-attachment: fixed;
+  animation: gradient 20s ease infinite;
+  transition: all .3s ease;
+}
+
+.preloader_disabled {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.preloader #round {
+  width: 117px;
+  height: 117px;
+  overflow: hidden;
+  border-radius: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  position: absolute;
+  height: 117px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.preloader .inround {
+  position: absolute;
+  margin: 10px;
+  width: 97px;
+  height: 97px;
+  overflow: hidden;
+  background: #f45f7a;
+  border-radius: 200px;
+  z-index: 100;
+}
+
+.preloader .triangle-left {
+  margin-top: -0px;
+  margin-left: 0px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(90deg, #9cff94 0, #faff00 100%);
+  transform-origin: 100% 100%;
+  border-radius: 100% 100% 100% 0% / 0% 0% 0% 0;
+  animation: rotate 3s linear infinite;
+}
+
+.preloader__circle {
+  width: 117px;
+  position: absolute;
+  height: 117px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  border-radius: 100%;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  33% {
+    transform: rotate(360deg);
+  }
+
+  66% {
+    transform: rotate(720deg);
+  }
+
+  100% {
+    transform: rotate(1080deg);
+  }
 }
 
 .title {
@@ -2145,6 +2238,30 @@ button {
   .header__nav {
     width: 50%;
   }
+
+  .animation-area__figures li:nth-child(1) {
+    width: 22px;
+    height: 22px;
+  }
+
+  .animation-area__figures li:nth-child(2),
+  .animation-area__figures li:nth-child(7) {
+    width: 67px;
+    height: 67px;
+  }
+
+  .animation-area__figures li:nth-child(3),
+  .animation-area__figures li:nth-child(4),
+  .animation-area__figures li:nth-child(5) {
+    width: 51px;
+    height: 51px;
+  }
+
+  .animation-area__figures li:nth-child(6),
+  .animation-area__figures li:nth-child(8) {
+    width: 84px;
+    height: 84px;
+  }
 }
 
 @media (max-width: 500px) {
@@ -2290,6 +2407,21 @@ button {
 
   .contacts__totopbtn-label {
     margin-right: 25px;
+  }
+
+  .preloader #round {
+    width: 90px;
+    height: 90px;
+  }
+
+  .preloader .inround {
+    width: 70px;
+    height: 70px;
+  }
+
+  .preloader .triangle-left {
+    width: 45px;
+    height: 45px;
   }
 }
 
