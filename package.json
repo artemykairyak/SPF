@@ -31,6 +31,6 @@
   },
   "dependencies": {
     "imagemin-jpeg-recompress": "^6.0.0",
-    "imagemin-svgo": "^7.0.0"
+    "imagemin-svgo": "^7.1.0"
   }
 }
